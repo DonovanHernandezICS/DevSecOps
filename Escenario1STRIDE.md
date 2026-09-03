@@ -22,11 +22,11 @@ graph TD
     API -->|3. Valida Token| Auth["🔑 Servicio de Auth Externo (OAuth)"]
     
     %% Fronteras de Confianza
-    subgraph Frontera de Internet (Insegura)
+    subgraph "Frontera de Internet (Insegura)"
         Usuario
     end
     
-    subgraph Red Interna de la Empresa (Zona Segura)
+    subgraph Red "Interna de la Empresa (Zona Segura)"
         API
         BD
         Auth
