@@ -26,7 +26,7 @@ graph TD
         Usuario
     end
     
-    subgraph Red "Interna de la Empresa (Zona Segura)"
+    subgraph "Red Interna de la Empresa (Zona Segura)"
         API
         BD
         Auth
