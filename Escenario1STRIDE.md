@@ -13,26 +13,24 @@ graph TD
     %% Definición de Estilos y Fronteras de Confianza
     classDef internet fill:#f9f,stroke:#333,stroke-width:2px;
     classDef secureZone fill:#bbf,stroke:#333,stroke-width:2px;
-    
-    %% Actores y Componentes
-    Usuario["🌐 Usuario (Navegador/App)"] -->|1. Envía Credenciales (HTTPS)| API["⚙️ API Gateway / Backend"]
-    Admin["👨‍💻 Administrador de Red"] -->|5. Mantenimiento (SSH)| BD[("🗄️ Base de Datos SQL")]
-    
-    API -->|2. Consulta / Guarda Usuario| BD
-    API -->|3. Valida Token| Auth["🔑 Servicio de Auth Externo (OAuth)"]
-    
-    %% Fronteras de Confianza
-    subgraph Frontera de Internet (Insegura)
-        Usuario
-    end
-    
-    subgraph Red Interna de la Empresa (Zona Segura)
-        API
-        BD
-        Auth
+
+    %% Fronteras de Confianza y Componentes
+    subgraph Zone1 ["Frontera de Internet (Insegura)"]
+        Usuario["🌐 Usuario (Navegador/App)"]
     end
 
-    %% Aplicar Estilos
+    subgraph Zone2 ["Red Interna de la Empresa (Zona Segura)"]
+        API["⚙️ API Gateway / Backend"]
+        BD[("🗄️ Base de Datos SQL")]
+        Auth["🔑 Servicio de Auth Externo (OAuth)"]
+    end
+
+    Admin["👨‍💻 Administrador de Red"]
+    Usuario -->|1. Envía Credenciales (HTTPS)| API
+    Admin -->|5. Mantenimiento (SSH)| BD
+    API -->|2. Consulta / Guarda Usuario| BD
+    API -->|3. Valida Token| Auth
+
     class Usuario internet;
     class API,BD,Auth secureZone;
 ```
