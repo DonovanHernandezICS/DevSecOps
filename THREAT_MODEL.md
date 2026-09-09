@@ -18,7 +18,7 @@ graph TD
         User["[Usuario / Cliente]"]
     end
 
-    subgraph Frontera_1 ["TB-1: HTTPS / Autenticación"]
+    subgraph Frontera_1 ["TB-1: HTTPS / Autenticación / VPN"]
         API["[API Backend / Servicio]"]
     end
 
