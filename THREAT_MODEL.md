@@ -10,24 +10,12 @@
 
 ## 1. Arquitectura del Sistema
 
-El siguiente diagrama en **Mermaid.js** representa la arquitectura segura del sistema y sus fronteras de confianza (*Trust Boundaries*):
-
 ```mermaid
-graph TD
-    subgraph Red_Externa ["Red Externa (Pública)"]
-        User["[Usuario / Cliente]"]
-    end
-
-    subgraph Frontera_1 ["TB-1: HTTP / Sin autenticación"]
-        API["[API Backend / Servicio]"]
-    end
-
-    subgraph Frontera_2 ["TB-2: Red Privada / VPC"]
-        DB[("[(Base de Datos)]")]
-    end
-
-    User -->|Peticiones HTTP/REST| API
-    API -->|Consultas SQL Seguras| DB
+| Elemento | Descripción | Control |
+|---|---|---|
+| Usuario | Usuario externo del sistema | Autenticación |
+| API | Servicio backend | HTTPS/TLS |
+| Base de Datos | Almacena la información | Red privada |
 ```
 
 ---
