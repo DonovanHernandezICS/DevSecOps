@@ -10,13 +10,11 @@
 
 ## 1. Arquitectura del Sistema
 
-```mermaid
 | Elemento | Descripción | Control |
 |---|---|---|
 | Usuario | Usuario externo del sistema | Autenticación |
 | API | Servicio backend | HTTPS/TLS |
 | Base de Datos | Almacena la información | Red privada |
-```
 
 ---
 
