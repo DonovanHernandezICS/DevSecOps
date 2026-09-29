@@ -7,7 +7,6 @@
 **Metodología:** STRIDE  
 
 ---
-
 ## 1. Arquitectura del Sistema
 
 El siguiente diagrama en **Mermaid.js** representa la arquitectura segura del sistema y sus fronteras de confianza (*Trust Boundaries*):
@@ -29,6 +28,15 @@ graph TD
     User -->|Peticiones HTTP/REST| API
     API -->|Consultas SQL Seguras| DB
 ```
+## 2. Reglas de seguridad
+
+| Elemento | Descripción | Control |
+|---|---|---|
+| Reglas | Descripcion | Resultado |
+| Claves GPG | Firmar los commits para verificar la identidad del usuario que realizó el cambio | El usuario no puede autenticar mediante el uso de su contraseña y requiere el uso de una CLAVE SSH o GPG |
+| Revisiones | Revisión y aprobación de los cambios por otro usuario antes de integrarlos | El commit/merge no puede realizarse hasta que otro usuario revise y autorize |
+| Bloquear commit a main | Impedir cambios directos en main; los cambios deben realizarse mediante Pull Request | Todos los cambios a la rama principal quedaron bloqueados, se requiere de otra rama |
+| validación y pruebas automatizadas | Ejecutar automáticamente pruebas y verificaciones mediante CI antes de integrar cambios | Todos los commit/merge pasan por una revision automatizada de prueba que proximamente sera desarrollada |
 
 ---
 
