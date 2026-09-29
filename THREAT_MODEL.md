@@ -8,7 +8,7 @@
 
 ---
 
-## 1. Arquitectura del Sistema
+## 1. Reglas de seguridad
 
 | Elemento | Descripción | Control |
 |---|---|---|
