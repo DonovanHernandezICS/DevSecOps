@@ -31,6 +31,7 @@ graph TD
 ## 2. Reglas de seguridad
 
 | Reglas | Descripcion | Resultado |
+| --- | --- | --- |
 | Claves GPG | Firmar los commits para verificar la identidad del usuario que realizó el cambio | El usuario no puede autenticar mediante el uso de su contraseña y requiere el uso de una CLAVE SSH o GPG |
 | Revisiones | Revisión y aprobación de los cambios por otro usuario antes de integrarlos | El commit/merge no puede realizarse hasta que otro usuario revise y autorize |
 | Bloquear commit a main | Impedir cambios directos en main; los cambios deben realizarse mediante Pull Request | Todos los cambios a la rama principal quedaron bloqueados, se requiere de otra rama |
