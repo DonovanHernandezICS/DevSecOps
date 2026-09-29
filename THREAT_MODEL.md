@@ -7,8 +7,28 @@
 **Metodología:** STRIDE  
 
 ---
+## 1. Arquitectura del Sistema
 
-## 1. Reglas de seguridad
+El siguiente diagrama en **Mermaid.js** representa la arquitectura segura del sistema y sus fronteras de confianza (*Trust Boundaries*):
+
+```mermaid
+graph TD
+    subgraph Red_Externa ["Red Externa (Pública)"]
+        User["[Usuario / Cliente]"]
+    end
+
+    subgraph Frontera_1 ["TB-1: HTTP / Sin autenticación"]
+        API["[API Backend / Servicio]"]
+    end
+
+    subgraph Frontera_2 ["TB-2: Red Privada / VPC"]
+        DB[("[(Base de Datos)]")]
+    end
+
+    User -->|Peticiones HTTP/REST| API
+    API -->|Consultas SQL Seguras| DB
+```
+## 2. Reglas de seguridad
 
 | Elemento | Descripción | Control |
 |---|---|---|
