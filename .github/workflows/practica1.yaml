@@ -1,6 +1,7 @@
 jobs:
   execute:
     runs-on: ubuntu-latest
-  steps:
-    - run: echo "hola mundito"
+    steps:
+      - name: saludito
+        run: echo "hola mundito"
     
