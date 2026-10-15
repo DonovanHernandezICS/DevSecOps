@@ -1,4 +1,4 @@
-# Modelo de Amenazas (Threat Model) - DevSecOps I
+# Modelo de Amenazas (Threat Model) - DevSecOps I (NuevaRama)
 
 **Materia:** DevSecOps I  
 **Docente:** Dr. Luis Alberto Reyes Ibarra  
