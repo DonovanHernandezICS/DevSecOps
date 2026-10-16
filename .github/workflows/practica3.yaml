@@ -1,0 +1,44 @@
+name: SAST para código Python
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  sast-python:
+    runs-on: ubuntu-latest
+    # Se requieren permisos de escritura en 'security-events' para subir el reporte SARIF
+    permissions:
+      security-events: write
+      contents: read
+
+    steps:
+    # 1. Descargar el código del repositorio
+    - name: Checkout de código
+      uses: actions/checkout@v4
+
+    # 2. Configurar el entorno de Python
+    - name: Configurar Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+
+    # 3. Instalar Bandit y el plugin para formato SARIF
+    - name: Instalar Bandit y formateador SARIF
+      run: |
+        pip install bandit bandit-sarif-formatter
+
+    # 4. Ejecutar el análisis y exportar a SARIF
+    # Nota: Usamos '|| true' para que el pipeline no se rompa aquí, 
+    # permitiendo que el reporte se suba a GitHub y sea procesado allí.
+    - name: Analizar con Bandit y generar SARIF
+      run: |
+        bandit -r . -f sarif -o bandit-results.sarif || true
+
+    # 5. Subir el archivo SARIF a la pestaña de Security
+    - name: Subir reporte a GitHub Code Scanning
+      uses: github/codeql-action/upload-sarif@v3
+      with:
+        sarif_file: bandit-results.sarif
